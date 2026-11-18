@@ -1,0 +1,12 @@
+node_modules/
+out/
+dist/
+*.log
+.env
+# Built from native/uia-helper.cs on first run
+native/bin/
+
+# Team documents stay on this PC
+IDEA TO BE DONE.txt
+*.pdf
+notes/

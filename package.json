@@ -1,0 +1,79 @@
+{
+  "name": "lefty",
+  "version": "0.1.6",
+  "description": "Lefty: a friendly AI cursor that points you to the next step in any app.",
+  "main": "src/main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "server": "node server/index.js",
+    "test:eyes": "node scripts/test-eyes.js",
+    "test:match": "node scripts/test-match.js",
+    "test:guard": "node scripts/test-guard.js",
+    "test:skills": "node scripts/test-skills.js",
+    "test:auto": "node scripts/test-auto.js",
+    "test:voice": "node scripts/test-voice.js",
+    "test:focus": "node scripts/test-focus.js",
+    "test:ghost": "node scripts/test-ghost.js",
+    "test:snap": "node scripts/test-snap.js",
+    "test:shortcut": "node scripts/test-shortcut.js",
+    "test:brain": "node scripts/test-brain.js",
+    "test:route": "node scripts/test-route.js",
+    "test:apps": "node scripts/test-apps.js",
+    "test:server": "node scripts/test-server.js",
+    "test:cdr": "node scripts/test-cdr.js",
+    "test:url-guard": "node scripts/test-url-guard.js",
+    "selftest": "set LEFTY_SELFTEST=1&& electron .",
+    "test": "npm run test:match && npm run test:guard && npm run test:skills && npm run test:auto && npm run test:voice && npm run test:focus && npm run test:history && npm run test:editors && npm run test:ghost && npm run test:snap && npm run test:shortcut && npm run test:brain && npm run test:route && npm run test:apps && npm run test:overlay && npm run test:icon && npm run test:server && npm run test:eyes && npm run selftest",
+    "icon": "electron scripts/make-icon.js",
+    "dist": "electron-builder --win nsis",
+    "test:history": "node scripts/test-history.js",
+    "test:editors": "node scripts/test-editors.js",
+    "test:overlay": "node scripts/test-overlay.js",
+    "test:icon": "node scripts/test-icon.js"
+  },
+  "devDependencies": {
+    "electron": "33.2.1",
+    "electron-builder": "25.1.8"
+  },
+  "dependencies": {
+    "uiohook-napi": "1.5.4"
+  },
+  "author": "Sanjay",
+  "build": {
+    "appId": "com.lefty.app",
+    "productName": "Lefty",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "src/**/*",
+      "assets/**/*",
+      "native/**/*",
+      "package.json"
+    ],
+    "asarUnpack": [
+      "native/**"
+    ],
+    "npmRebuild": false,
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico",
+      "requestedExecutionLevel": "requireAdministrator"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Lefty",
+      "runAfterFinish": true,
+      "artifactName": "Lefty-Setup-${version}.${ext}",
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "include": "build/installer.nsh"
+    },
+    "publish": null
+  }
+}
